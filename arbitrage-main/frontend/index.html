@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Арбітраж | Доступні інвестиції</title>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+
+<body>
+    <!-- ---------- TOP NAV ---------- -->
+    <header>
+        <div class="logo" data-i18n="available_investments">🪙 Доступні інвестиції</div>
+        <div class="user">
+            <div>🌙</div>
+            <div data-i18n="user">user⌄</div>
+        </div>
+        <nav>
+            <a href="#" class="active" data-i18n="arbitrage">Арбітраж</a>
+            <a href="#">Стейкінг</a>
+            <!-- <a href="#">Криптопози</a>
+            <a href="#">Лаунчпули <span
+                    style="background:#ff2b2b;color:#fff;font-size:11px;padding:2px 6px;border-radius:6px;vertical-align:top;">10</span></a>
+            <a href="#">Премаркет</a>
+            <a href="#">Таблиці</a>
+            <a href="#">Курси банків</a> -->
+        </nav>
+    </header>
+
+    <!-- ---------- MAIN CONTENT ---------- -->
+    <main>
+        <!-- Title -->
+        <h1><span data-i18n="arbitrage">Арбітраж</span> <span class="vip">VIP</span></h1>
+
+        <!-- Filters bar -->
+        <div class="filters">
+            <select id="sort-select">
+                <option>long+short: funding</option>
+                <option>long+short: spread</option>>
+                <!-- <option>spot+short: funding</option>
+                <option>spot+short: spread</option> -->
+            </select>
+
+            <!-- Біржі (кастомний дропдаун) -->
+            <div class="dropdown-container">
+                <button id="exchangeDropdownBtn" class="dropdown-btn" data-i18n="exchanges">Біржі ⌄</button>
+
+                <div id="exchangeDropdown" class="dropdown-panel">
+                    <ul class="dropdown-list">
+                        <li><label><input type="checkbox" value="Backpack" /> Backpack</label></li>
+                        <li><label><input type="checkbox" value="Kiloex" /> Kiloex</label></li>
+                        <li><label><input type="checkbox" value="Aevo" /> Aevo</label></li>
+                        <li><label><input type="checkbox" value="Paradex" /> Paradex</label></li>
+                    </ul>
+
+                    <div class="dropdown-actions">
+                        <button class="btn-reset" id="exchangeReset">Reset</button>
+                        <button class="btn-apply" id="exchangeApply">Apply</button>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- <input type="number" value="0" step="0.1" placeholder="0.0" style="width:30px;" />
+            <span>M</span>
+
+            <label class="toggle"><input type="checkbox" /> Різні інтервали</label>
+            <label class="toggle"><input type="checkbox" /> Групування</label>
+
+            <button class="button">Ref links ⌄</button> -->
+            <span id="timer"><span id="time">0s</span></span><div id="loader" class="invisible"></div>
+        </div>
+
+        <!-- Data table -->
+        <div class="table-wrapper">
+
+            <table id="main_table">
+                <thead>
+                    <tr>
+                        <!-- Монета + іконка пошуку -->
+                        <th class="coin-col">
+                            <span data-i18n="coin">Монета</span>
+                            <!-- <span class="search-icon">🔍</span> -->
+                        </th>
+
+                        <th style=" width: 180px;" data-i18n="pair">Зв'язка</th>
+                        <th data-i18n="funding">Fund</th>
+                        <th data-i18n="APR">F Spread APR</th>
+                        <th data-i18n="funding_spread">F Spread</th>
+                        <th data-i18n="price_spread">Price spread</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <!-- SOL (2 рядки, назва монети тягнеться через них) -->
+
+                    <tr>
+                        <td class="coin-name" rowspan="2">SOL</td>
+                        <td class="pair-cell">
+                            🟢
+                            <a href="#">Backpack</a>
+                            <p style="margin-left: 15px;">150$</p>
+                        </td>
+                        <td>
+                            <p>0.02755% <small style="margin-left: 5px ;"> 8h</small> </p>
+                        </td>
+                        <td class="coin-name" rowspan="2">4142.82%</td>
+                        <td class="coin-name" rowspan="2"><span class="badge green">3.78%</span></td>
+                        <td class="coin-name" rowspan="2"><span class="badge green">7.13%</span></td>
+                    </tr>
+                    <tr class="second_tr">
+                        <!-- порожня перша клітинка, бо rowspan у попередньому -->
+                        <td class="pair-cell">
+                            🔴
+                            <a href="#">Kiloex</a>
+                            <p style="margin-left: 15px;">140$</p>
+                        </td>
+                        <td style="border-right: 1px solid var(--border);">
+                            <p>-0.01965% <small style="margin-left: 5px ;"> 4h</small> </p>
+                        </td>
+
+
+
+                    </tr>
+
+                    <tr>
+                        <td class="coin-name" rowspan="2">SOL</td>
+                        <td class="pair-cell">
+                            🟢
+                            <a href="#">Backpack</a>
+                            <p style="margin-left: 15px;">150$</p>
+                        </td>
+                        <td>
+                            <p>0.02755% <small style="margin-left: 5px ;"> 1h</small> </p>
+                        </td>
+                        <td class="coin-name" rowspan="2">4142.82%</td>
+                        <td class="coin-name" rowspan="2"><span class="badge green">3.78%</span></td>
+                        <td class="coin-name" rowspan="2"><span class="badge green">7.13%</span></td>
+                    </tr>
+                    <tr class="second_tr">
+                        <!-- порожня перша клітинка, бо rowspan у попередньому -->
+                        <td class="pair-cell">
+                            🔴
+                            <a href="#">Kiloex</a>
+                            <p style="margin-left: 15px;">140$</p>
+                        </td>
+                        <td style="border-right: 1px solid var(--border);">
+                            <p>-0.01965% <small style="margin-left: 5px ;"> 4h</small> </p>
+                        </td>
+
+
+
+                    </tr>
+
+
+                </tbody>
+
+            </table>
+        </div>
+    </main>
+
+    <script src="static/js/index.js" type="module"></script>
+
+</body>
+
+</html>
